@@ -39,15 +39,6 @@ class CategoryController extends Controller
             $file->move('upload/category/', $filename);
             $category->image = $filename;
         }
-        // if ($request->hasFile('image')) {
-        //     $request->validate([
-        //         'image' => 'required|image|mimes:jpeg,png,jpg|max:5000', //5 MB
-        //     ]);
-        //     $imageFile = $request->file('image');
-        //     $filenameMain = time() . 'AM' . '.' . $imageFile->getClientOriginalExtension(); //AM - Article Main
-        //     $image = Image::make($imageFile);
-        //     $image->save( public_path('/upload/category/' . $filenameMain ) );
-        // }
 
         $category->mata_title = $validateData['mata_title'];
         $category->meta_keyword = $validateData['meta_keyword'];
