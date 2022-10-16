@@ -12,7 +12,8 @@ class ColorController extends Controller
     public function index()
     {
 
-        return view('admin.colors.index');
+        $colors = Color::all();
+        return view('admin.colors.index', compact('colors'));
     }
 
     public function create()
@@ -24,8 +25,29 @@ class ColorController extends Controller
     public function store(ColorsFormRequest $request)
     {
         $validateData = $request->validated();
-
+        $validateData['status'] = $request->status == true ? '1' : '0';
         Color::create($validateData);
-        return redirect('/admin/colors')->with('message', 'Color Added Successfully');
+        return redirect('admin/colors')->with('message', 'Color Added Successfully');
+    }
+
+    public function edit(Color $color)
+    {
+
+        return view('admin.colors.edit', compact('color'));
+    }
+
+    public function update(ColorsFormRequest $request, $color_id)
+    {
+        $validateData = $request->validated();
+        $validateData['status'] = $request->status == true ? '1' : '0';
+        Color::find($color_id)->update($validateData);
+        return redirect('admin/colors')->with('message', 'Color Updated Successfully');
+    }
+
+    public function destroy($color_id)
+    {
+        $color= Color::find($color_id);
+        $color->delete();
+        return redirect('admin/colors')->with('message', 'Color Deleted Successfully');
     }
 }
