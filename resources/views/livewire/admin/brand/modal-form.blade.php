@@ -10,32 +10,43 @@
             <form wire:submit.prevent="storeBrand">
                 <div class="modal-body">
 
-                    <div class="row">
-
-                        <div class="col-md-6 mb-3">
-                            <label for="">Brand Name</label>
-                            <input type="text" wire:model.defer="name" class="form-control">
-                            @error('name')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="">Brand Slug</label>
-                            <input type="text" wire:model.defer="slug" class="form-control">
-                            @error('slug')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-                            <label for="">Status</label>
-                            <br>
-                            <input type="checkbox" wire:model.defer="status">
-                        </div>
-
-
-
+                    <div class="mb-3">
+                        <label for="">Select Category</label>
+                        <select wire:model.defer="category_id" required class="form-control">
+                            <option value="">--Select Category--</option>
+                            @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                         
+                        </select>
+                        @error('category_id')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
                     </div>
+
+                    <div class="mb-3">
+                        <label for="">Brand Name</label>
+                        <input type="text" wire:model.defer="name" class="form-control">
+                        @error('name')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Brand Slug</label>
+                        <input type="text" wire:model.defer="slug" class="form-control">
+                        @error('slug')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="">Status</label>
+                        <br>
+                        <input type="checkbox" wire:model.defer="status">
+                    </div>
+
+
+
 
 
 
@@ -73,15 +84,29 @@
                 <form wire:submit.prevent="updateBrand">
                     <div class="modal-body">
 
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
+                        <div class="mb-3">
+                            <label for="">Select Category</label>
+                            <select wire:model.defer="category_id" required class="form-control">
+                                <option value="">--Select Category--</option>
+                                @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                             
+                            </select>
+                            @error('category_id')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+    
+
+                            <div class="mb-3">
                                 <label for="">Brand Name</label>
                                 <input type="text" wire:model.defer="name" class="form-control">
                                 @error('name')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="col-md-12 mb-3">
+                            <div class="mb-3">
                                 <label for="">Brand Slug</label>
                                 <input type="text" wire:model.defer="slug" class="form-control">
                                 @error('slug')
@@ -89,12 +114,12 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-12 mb-3">
+                            <div class="mb-3">
                                 <label for="">Status</label>
                                 <br>
                                 <input type="checkbox" wire:model.defer="status" style="width:70px;height=70px;">
                             </div>
-                        </div>
+                      
                     </div>
                     <div class="modal-footer">
                         <button type="button" wire:click="closeModal" class="btn btn-secondary"

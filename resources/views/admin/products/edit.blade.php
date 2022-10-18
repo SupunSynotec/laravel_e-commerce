@@ -306,9 +306,9 @@
                 var product_id = "{{ $product->id }}";
                 var prod_color_id = $(this).val();
                 var qty = $(this).closest('.prod-color-tr').find('.productColorQuantity').val();
-                alert(product_id);
+             
 
-                if (qty <= 0) {
+                if (qty < -1) {
                     alert('Quantity is Required');
                     return false;
                 }
