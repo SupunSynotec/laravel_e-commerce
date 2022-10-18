@@ -20,6 +20,7 @@
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">Category</th>
                                 <th scope="col">Slug</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
@@ -31,6 +32,14 @@
 
                                     <td>{{ $brand->id }}</td>
                                     <td>{{ $brand->name }}</td>
+                                    <td>
+                                        @if ($brand->category)
+                                        {{ $brand->category->name }}
+                                        @else
+                                            
+                                        @endif
+                                        
+                                    </td>
                                     <td>{{ $brand->slug }}</td>
                                     <td>{{ $brand->status == '1' ? 'Hidden' : 'Visible' }}</td>
                                     <td>

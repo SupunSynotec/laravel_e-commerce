@@ -28,7 +28,7 @@
         <div class="collapse" id="new-ui">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{ url('admin/products/create') }}">Add Product</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/products') }}">View category</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/products') }}">View Product</a></li>
           </ul>
         </div>
       </li>
@@ -57,9 +57,9 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/icons/mdi.html">
-          <i class="mdi mdi-emoticon menu-icon"></i>
-          <span class="menu-title">Icons</span>
+        <a class="nav-link" href="{{ url('admin/sliders') }}">
+          <i class="mdi mdi-view-carousel menu-icon"></i>
+          <span class="menu-title">Home Slider</span>
         </a>
       </li>
       <li class="nav-item">
