@@ -36,8 +36,7 @@
                                 @if ($product->productColors)
                                     @foreach ($product->productColors as $colorItem)
                                         {{-- <input type="radio" name="colorSelection" value="{{ $colorItem->id }}"> {{ $colorItem->color->name }} --}}
-                                        <label for="" class="colorSelectionLabel"
-                                            style="background-color: {{ $colorItem->color->code }}"
+                                        <label for="" class="colorSelectionLabel" style="background-color: {{ $colorItem->color->code }}"
                                             wire:click="colorSelected({{ $colorItem->id }})">{{ $colorItem->color->name }}</label>
                                     @endforeach
                                 @endif
@@ -59,15 +58,17 @@
                         </div>
                         <div class="mt-2">
                             <div class="input-group">
-                                <span class="btn btn1"><i class="fa fa-minus"></i></span>
-                                <input type="text" value="1" class="input-quantity" />
-                                <span class="btn btn1"><i class="fa fa-plus"></i></span>
+                                <span class="btn btn1" wire:click="decrementQuantity"><i class="fa fa-minus"></i></span>
+                                <input type="text" wire:model="quantityCount" value="{{ $this->quantityCount }}" readonly class="input-quantity" />
+                                <span class="btn btn1" wire:click="incrementQuantity"><i class="fa fa-plus"></i></span>
                             </div>
                         </div>
                         <div class="mt-2">
-                            <a href="" class="btn btn1"> <i class="fa fa-shopping-cart"></i> Add To Cart</a>
+                            <button wire:click="addToCart({{ $product->id }})" class="btn btn1"> 
+                                <i class="fa fa-shopping-cart"></i> Add To Cart
+                            </button>
                             <button type="button" wire:click="addToWishlist({{ $product->id }})" class="btn btn1">
-                                <span wire:loading.remove>
+                                <span wire:loading.remove wire:target="addToWishlist">
                                     <i class="fa fa-heart"></i> Add To Wishlist
                                 </span>
                                 <span wire:loading wire:target="addToWishlist">

@@ -51,10 +51,10 @@
                                                     wire:click="removeWishlistItem({{ $wishlistItem->id }})"
                                                     class="btn btn-danger btn-sm">
                                                     <span wire:loading.remove wire:target="removeWishlistItem({{ $wishlistItem->id }})">
-                                                        <i class="fa fa-trash"></i>Remove
+                                                        <i class="fa fa-trash"></i> Remove
                                                     </span>
                                                     <span wire:loading wire:target="removeWishlistItem({{ $wishlistItem->id }})">
-                                                         <i class="fa fa-trash"></i>Removing</span>
+                                                         <i class="fa fa-trash"></i> Removing</span>
                                                 </button>
                                             </div>
                                         </div>

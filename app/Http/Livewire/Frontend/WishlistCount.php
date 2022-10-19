@@ -11,7 +11,9 @@ class WishlistCount extends Component
 
     public $wishlistCount;
 
-    public function checlwishlistCount()
+    protected $listeners = ['wishlistAddedUpdated'=>'checkwishlistCount'];
+
+    public function checkwishlistCount()
     {
         if (Auth::check()) {
             return $this->wishlistCount = Wishlist::where('user_id', auth()->user()->id)->count();
@@ -22,7 +24,7 @@ class WishlistCount extends Component
 
     public function render()
     {
-       $this->wishlistCount = $this->checlwishlistCount();
+       $this->wishlistCount = $this->checkwishlistCount();
         return view('livewire.frontend.wishlist-count',[
             'wishlistCount'=>   $this->wishlistCount
         ]);
