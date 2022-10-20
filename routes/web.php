@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Livewire\Admin\Brand\Index;
@@ -35,6 +37,10 @@ Route::get('/collecton/{category_slug}/{product_slug}', [FrontendController::cla
 
 Route::middleware(['auth'])->group(function () {
     Route::get('wishlist', [WishlistController::class, 'index']);
+    Route::get('cart', [CartController::class, 'index']);
+    Route::get('checkout', [CheckoutController::class, 'index']);
+   
+
 });
 
 
