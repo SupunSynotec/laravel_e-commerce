@@ -51,6 +51,7 @@ class View extends Component
     public function colorSelected($productColorId)
     {
 
+        
         $this->productColorId = $productColorId;
         $productColor = $this->product->productColors()->where('id', $productColorId)->first();
         $this->productColorSelectedQuantity =   $productColor->quantity;
@@ -77,6 +78,7 @@ class View extends Component
 
     public function addToCart(int $productId)
     {
+     
         if (Auth::check()) {
             if ($this->product->where('id', $productId)->where('status', '0')->exists()) {
 
